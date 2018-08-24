@@ -1,0 +1,87 @@
+[
+  {
+    "id": ["14e3598b1c58f1f48b74aab35d6c39183568286f"],
+    "class": ["rawplot", "plot"],
+    "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"]
+  },
+  {
+    "id": ["2b67f4934da0aa3baecfdd3001008539217d5719"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["89c78e898c6eabe8f86337134c0e1defc14ad0d6"]
+  },
+  {
+    "id": ["539d7b916fd845319be242640085b59dbcf52506"],
+    "class": ["rawplot", "plot"],
+    "parents": ["b418c06265e5e675ae0259d59829ef18b0d63504"]
+  },
+  {
+    "id": ["57fbe7553e11c7b0149040f5781c209b266ed637"],
+    "class": ["lm"],
+    "parents": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"]
+  },
+  {
+    "id": ["64228d012f7c0ceb8584435effa4e4d3c6fcc171"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"]
+  },
+  {
+    "id": ["6ee2aabafb16a60526c9f476c53f97e4f41a3464"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"]
+  },
+  {
+    "id": ["70f3c0a43d894b3cd0d678ef2acbb96f9a5c679e"],
+    "class": ["rawplot", "plot"],
+    "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"]
+  },
+  {
+    "id": ["866190fb7813fefda8987a1400092a2a4d25f1d3"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["f2d8e9297cd1b19780e53f999cd6baff436af39c"]
+  },
+  {
+    "id": ["89c78e898c6eabe8f86337134c0e1defc14ad0d6"],
+    "class": ["tbl_df", "tbl", "data.frame"],
+    "parents": []
+  },
+  {
+    "id": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"]
+  },
+  {
+    "id": ["b418c06265e5e675ae0259d59829ef18b0d63504"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["6ee2aabafb16a60526c9f476c53f97e4f41a3464"]
+  },
+  {
+    "id": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"]
+  },
+  {
+    "id": ["ba5bb30555c5fba63655cb73b5d08bd074997550"],
+    "class": ["rawplot", "plot"],
+    "parents": ["866190fb7813fefda8987a1400092a2a4d25f1d3"]
+  },
+  {
+    "id": ["d0fe8d94550be6fdbe370b88cef5bb7f1f9c4676"],
+    "class": ["rawplot", "plot"],
+    "parents": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"]
+  },
+  {
+    "id": ["f2d8e9297cd1b19780e53f999cd6baff436af39c"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"]
+  },
+  {
+    "id": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"],
+    "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"]
+  },
+  {
+    "id": ["fb79a00868474d6371201271065cd30877e65d03"],
+    "class": ["rawplot", "plot"],
+    "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"]
+  }
+]
