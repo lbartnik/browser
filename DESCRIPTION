@@ -11,13 +11,17 @@ BugReports: https://github.com/lbartnik/browser/issues
 Depends:
   R (>= 3.4.0)
 Imports:
+  htmlwidgets,
   repository,
   rlang,
+  shiny,
   utilities
 Suggests:
   knitr,
+  rstudioapi,
   testthat
 Collate:
+  'shiny.R'
 Remotes:
   lbartnik/repository,
   lbartnik/utilities
