@@ -4,7 +4,7 @@ Title: GUI Browser for the Repository of Artifacts
 Version: 0.1
 Date: 2018-05-09
 Authors@R: person("Lukasz", "Bartnik", email = "l.bartnik@gmail.com", role = c("aut", "cre"))
-Description: Tracks full history of multiple consecutive R sessions.
+Description: Provides graphical means to browse artifacts in a repository.
 License: MIT + file LICENSE
 URL: https://github.com/lbartnik/browser
 BugReports: https://github.com/lbartnik/browser/issues
@@ -12,6 +12,7 @@ Depends:
   R (>= 3.4.0)
 Imports:
   htmlwidgets,
+  miniUI,
   repository,
   rlang,
   shiny,
@@ -21,7 +22,9 @@ Suggests:
   rstudioapi,
   testthat
 Collate:
+  'browser.R'
   'shiny.R'
+  'widget.R'
 Remotes:
   lbartnik/repository,
   lbartnik/utilities
