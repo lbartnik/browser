@@ -1,0 +1,26 @@
+Package: browser
+Type: Package
+Title: GUI Browser for the Repository of Artifacts
+Version: 0.1
+Date: 2018-05-09
+Authors@R: person("Lukasz", "Bartnik", email = "l.bartnik@gmail.com", role = c("aut", "cre"))
+Description: Tracks full history of multiple consecutive R sessions.
+License: MIT + file LICENSE
+URL: https://github.com/lbartnik/browser
+BugReports: https://github.com/lbartnik/browser/issues
+Depends:
+  R (>= 3.4.0)
+Imports:
+  repository,
+  rlang,
+  utilities
+Suggests:
+  knitr,
+  testthat
+Collate:
+Remotes:
+  lbartnik/repository,
+  lbartnik/utilities
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
