@@ -7,9 +7,7 @@
 create_widget(data)
 }
 \arguments{
-\item{data}{container of artifacts; see \code{\link[repository:is_container]{repository::is_container()}}.}
-
-\item{embed}{Whether to embed plots as base64-encoded strings.}
+\item{data}{container of artifacts; see \link[repository:is_container]{repository::is_container}.}
 }
 \value{
 A \code{list} with two elements: the \code{data} container possibly with

@@ -12,8 +12,7 @@
 #' the R session. Subsequent calls to `prepare_plots` will only process
 #' new plots and thus be faster.
 #'
-#' @param embed Whether to embed plots as base64-encoded strings.
-#' @param data container of artifacts; see [repository::is_container()].
+#' @param data container of artifacts; see [repository::is_container].
 #' @return A `list` with two elements: the `data` container possibly with
 #' embedded plots; widget dependencies `html_deps`.
 #'
