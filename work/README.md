@@ -4,7 +4,7 @@ Development
 Run a local HTTP server
 
 ```bash
-python -m SimpleHTTPServer 8000
+python server.py
 ```
 
 Convert CoffeeScript to JS
