@@ -2,6 +2,7 @@
 
 export(browser_addin)
 import(miniUI)
+import(repository)
 import(utilities)
 importFrom(rlang,abort)
 importFrom(rlang,inform)
