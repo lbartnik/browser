@@ -61,18 +61,18 @@ prepare_plots <- function (data, path = tempdir()) {
 }
 
 
-extract_html_deps <- function (data) {
+extract_html_deps <- function (data, path) {
   plots <- Filter(function (a) artifact_is(a, 'plot'), data)
-  ids    <- map_chr(plots, `[[`, 'id')
-  paths  <- paste0(ids, '.png')
+  ids   <- map_chr(plots, `[[`, 'id')
+  names <- paste0(ids, '.png')
 
   deps <-
     list(
       htmltools::htmlDependency(
         "plots",
         version = "1",
-        src = html_dir,
-        attachment = with_names(paths, ids)
+        src = path,
+        attachment = with_names(names, ids)
       )
     )
 }
