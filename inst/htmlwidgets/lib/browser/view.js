@@ -3,21 +3,33 @@
  * DS102: Remove unnecessary code created because of implicit returns
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-// --- Browser ----------------------------------------------------------
-const Browser = function(element) {
-  const options  = { shiny: false, knitr: false };
-  let data     = null;
-  let size     = { width: 800, height: 600 };
+// --- TextTreeView -----------------------------------------------------
+const TextTreeView = function(container, model) {
 
-  const browser = function() {};
+  const textTreeView = function() {};
 
-  browser.setData = input => data = DataSet(input);
+  textTreeView.refresh = function() {
+    let tree;
+    const visit = function(node, parent) {
+      node.htmlSelf = $('<li>').appendTo(parent.htmlChildren);
+      return node.htmlChildren = $('<ul>').appendTo(node.htmlSelf);
+    };
 
-  browser.setSize = (width, height) => size = { width, height };
+    const topUl = $('<ul>').appendTo(container);
+    const htmlSelf = $('<li>').appendTo(topUl);
+    const htmlChildren = $('<ul>').appendTo(htmlSelf);
+    const root = {htmlChildren: topUl};
 
-  return browser;
+    return tree = model.traverseAsTree(visit, {htmlChildren});
+  };
+
+
+  // --- return the view object -----------------------------------------
+  log.debug('created view');
+  return textTreeView;
 };
+
 
 // --- exports ----------------------------------------------------------
 
-window.Browser = Browser;
+window.TextTreeView = TextTreeView;
