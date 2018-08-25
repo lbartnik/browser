@@ -39,6 +39,7 @@ prepare_plots <- function (data, embed = is_knitr())
     if (!artifact_is(a, 'plot')) return(a)
 
     # TODO will need to access the storage; is each artifact going to carry its storage as an attribute?
+    # TODO plots could also be lazy loaded from within the browser; widget still needs access to repo; knitr remains a special case
 
     if (isTRUE(embed)) {
       a$png <- storage::os_read_object(store, a$id)$png
@@ -55,10 +56,9 @@ prepare_plots <- function (data, embed = is_knitr())
     deps <- list()
   }
   else {
-    plots <- Filter(function (step) identical(step$type, 'plot'), steps)
-    ids   <- vapply(plots, `[[`, character(1), i = 'id')
-    plots <- vapply(plots, function(plot) paste0(plot$id, '.png'), character(1))
-    names(plots) <- ids
+    plots <- Filter(function (a) artifact_is(a, 'plot'), data)
+    ids    <- map_chr(plots, `[[`, 'id')
+    paths  <- paste0(ids, '.png')
 
     deps <-
       list(
@@ -66,7 +66,7 @@ prepare_plots <- function (data, embed = is_knitr())
           "plots",
           version = "1",
           src = html_dir,
-          attachment = plots
+          attachment = with_names(paths, ids)
         )
       )
   }
