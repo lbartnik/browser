@@ -1,19 +1,13 @@
-# --- Browser ----------------------------------------------------------
-Browser = (element) ->
-  options  = { shiny: false, knitr: false }
-  data     = null
-  size     = { width: 800, height: 600 }
+# --- TextTreeView -----------------------------------------------------
+TextTreeView = (container, model) ->
 
-  browser = () ->
+  textTreeView = () ->
 
-  browser.setData = (input) ->
-    data = DataSet(input)
+  # --- return the view object -----------------------------------------
+  log.debug('created view')
+  return textTreeView
 
-  browser.setSize = (width, height) ->
-    size = { width: width, height: height }
-
-  return browser
 
 # --- exports ----------------------------------------------------------
 
-window.Browser = Browser
+window.TextTreeView = TextTreeView

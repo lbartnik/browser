@@ -5,13 +5,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var shiny = (typeof HTMLWidgets != 'undefined' && HTMLWidgets.shinyMode);
-
-    el = $(el);
-    var mainContainer = $("<div>", {class: "main-container"}).appendTo(el);
-    var mainContainerEl = mainContainer.get(0);
-    var browser = Browser(mainContainerEl);
-
+    var browser = Browser(el);
 
     // return widget instance
     return {
