@@ -16,6 +16,7 @@ Browser = (element) ->
   browser.setData = (raw) ->
     model = DataSet(raw)
     view  = TextTreeView(container, model)
+    view.refresh()
 
   browser.setSize = (width, height) ->
     size = { width: width, height: height }

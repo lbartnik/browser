@@ -13,7 +13,23 @@ DataSet = (raw) ->
 
   dataset = () ->
 
-  dataset.asTree = () ->
+  # Turns a list of elements into a tree.
+  stratified = () ->
+    stratify = d3.stratify()
+      .id((d) -> d.id)
+      .parentId((d) -> d.parents[0] if d.parents?.length)
+    stratify(raw)
+
+  # Transforms the raw data into a tree of elements.
+  dataset.traverseAsTree = (f, root) ->
+    log.debug("traversing as tree")
+    traverse = (node, parent) ->
+      f(node.data, parent)
+      if node.children
+        traverse(child, node.data) for child in node.children
+    strats = stratified()
+    console.log(strats.children[0])
+    traverse(strats, root)
     
 
   return dataset
