@@ -5,11 +5,12 @@
  */
 // --- Browser ----------------------------------------------------------
 const Browser = function(element) {
-  const options   = { shiny: false, knitr: false };
-  let size      = { width: 800, height: 600 };
-  let container = null;
-  let view      = null;
-  let model     = null;
+  const options    = { shiny: false, knitr: false };
+  let size       = { width: 800, height: 600 };
+  let container  = null;
+  let view       = null;
+  let model      = null;
+  const controller = KeyboardController(null);
 
   const initialize = function() {
     options.shiny = ((typeof HTMLWidgets !== 'undefined') && HTMLWidgets.shinyMode);
@@ -22,6 +23,7 @@ const Browser = function(element) {
   browser.setData = function(raw) {
     model = DataSet(raw);
     view  = TextTreeView(container, model);
+    controller.setView(view);
     return view.refresh();
   };
 
