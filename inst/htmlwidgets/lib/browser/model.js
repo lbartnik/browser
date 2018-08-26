@@ -17,25 +17,25 @@
       });
       return stratify(raw);
     };
-    dataset.traverseAsTree = function(f, root) {
+    dataset.traverseAsTree = function(fun, root) {
       var strats, traverse;
       log.debug("traversing as tree");
-      traverse = function(node, parent) {
+      traverse = function(fun, node, parent) {
         var child, i, len, ref, results;
-        f(node.data, parent);
+        fun(node.data, parent);
         if (node.children) {
           ref = node.children;
           results = [];
           for (i = 0, len = ref.length; i < len; i++) {
             child = ref[i];
-            results.push(traverse(child, node.data));
+            results.push(traverse(fun, child, node.data));
           }
           return results;
         }
       };
       strats = stratified();
-      console.log(strats.children[0]);
-      return traverse(strats, root);
+      console.log(strats);
+      return traverse(fun, strats, root);
     };
     return dataset;
   };

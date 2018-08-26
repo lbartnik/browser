@@ -21,15 +21,15 @@ DataSet = (raw) ->
     stratify(raw)
 
   # Transforms the raw data into a tree of elements.
-  dataset.traverseAsTree = (f, root) ->
+  dataset.traverseAsTree = (fun, root) ->
     log.debug("traversing as tree")
-    traverse = (node, parent) ->
-      f(node.data, parent)
+    traverse = (fun, node, parent) ->
+      fun(node.data, parent)
       if node.children
-        traverse(child, node.data) for child in node.children
+        traverse(fun, child, node.data) for child in node.children
     strats = stratified()
-    console.log(strats.children[0])
-    traverse(strats, root)
+    console.log(strats)
+    traverse(fun, strats, root)
     
 
   return dataset

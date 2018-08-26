@@ -1,5 +1,6 @@
 library(repository)
 library(jsonlite)
+library(browser)
 
 r <- sample_repository()
 x <- as_artifacts(r) %>% read_artifacts()

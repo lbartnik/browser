@@ -6,6 +6,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var browser = Browser(el);
+    console.log('jest2');
 
     // return widget instance
     return {

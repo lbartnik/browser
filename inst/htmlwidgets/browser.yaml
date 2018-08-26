@@ -5,10 +5,10 @@ dependencies:
     script:
       - jquery.js
   - name: d3
-    version: 4.11.0
-    src: htmlwidgets/lib/d3-4.11.0
+    version: 5.7.0
+    src: htmlwidgets/lib/d3-5.7.0
     script:
-      - d3.min.js
+      - d3.v5.js
   - name: highlight
     version: 9.12.0
     src: htmlwidgets/lib/highlight-9.12.0
@@ -24,8 +24,9 @@ dependencies:
       - model.js
       - view.js
       - controller.js
+      - utilities.js
     stylesheet:
-      - browser.css
+      - main.css
       - view.css
       - controller.css
     attachment:
