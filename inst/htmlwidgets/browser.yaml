@@ -20,13 +20,13 @@ dependencies:
     version: 0.1
     src: htmlwidgets/lib/browser
     script:
-      - main.js
+      - browser.js
       - model.js
       - view.js
       - controller.js
       - utilities.js
     stylesheet:
-      - main.css
+      - browser.css
       - view.css
       - controller.css
     attachment:
