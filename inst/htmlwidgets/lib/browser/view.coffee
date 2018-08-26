@@ -1,6 +1,6 @@
 # --- TextTreeView -----------------------------------------------------
-TextTreeView = (container, model) ->
-  view = $('<div>', {class: 'view'}).appendTo(container)
+TextTreeView = (external, model) ->
+  container = $('<div>', {class: 'view'}).appendTo(external)
 
   textTreeView = () ->
 
@@ -17,7 +17,7 @@ TextTreeView = (container, model) ->
       node.htmlSelf = $('<li>').appendTo(parent.htmlChildren)
       node.htmlChildren = $('<ul>').appendTo(node.htmlSelf)
 
-    topUl = $('<ul>').appendTo(view)
+    topUl = $('<ul>').appendTo(container)
     htmlSelf = $('<li>').appendTo(topUl)
     htmlChildren = $('<ul>').appendTo(htmlSelf)
     root = {htmlChildren: topUl}
@@ -28,18 +28,17 @@ TextTreeView = (container, model) ->
   #     to the main container
   flatView = () ->
     create = (node, parent) ->
+      node.left = parent.left + 20
       node.element = $('<div>', {
           class: 'flat-artifact',
         })
-        .appendTo(view)
+        .css({left: node.left})
+        .on('click', node, selectArtifact)
+        .appendTo(container)
         .append(artifactDescription(node))
-    position = (node, parent) ->
-      node.left = parent.left + 20
-      node.element.css({left: node.left})
-
-    model.traverseAsTree(create, null)
-    model.traverseAsTree(position, {left: 0})
+    model.traverseAsTree(create, {left: 0})
   
+  # --- loads and fills artifact detailed description
   artifactDescription = (a) ->
     element = $("<div>")
       .load $("#browser-1-attachment").attr("href"), null, () ->
@@ -49,6 +48,12 @@ TextTreeView = (container, model) ->
           .text(a.expression)
           .each (i, block) -> hljs.highlightBlock(block)
     element
+
+  # --- interactions ---------------------------------------------------
+  selectArtifact = (event) ->
+    console.log('jest')
+    container.find('.flat-artifact').removeClass('selected')
+    $(this).addClass('selected')
 
 
   # --- return the view object -----------------------------------------

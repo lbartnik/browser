@@ -6,6 +6,18 @@
     position: relative;
 }
 
+.selected, .selected:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+.details {
+    padding: 1pt;
+}
+
+.details:hover {
+    background-color: rgb(245, 245, 245);
+}
+
 .details .name-label {
     font-family: monospace;
     white-space: pre;
