@@ -1,0 +1,27 @@
+.view {
+    position: relative;
+}
+
+.flat-artifact {
+    position: relative;
+}
+
+.details .name-label {
+    font-family: monospace;
+    white-space: pre;
+    color: silver;
+}
+
+.details .name, .details .description {
+    font-family: monospace;
+    white-space: pre;
+}
+
+.details .name-block, .details .description-block {
+    display: inline-block;
+}
+
+
+.details .code-block {
+    display: none;
+}
