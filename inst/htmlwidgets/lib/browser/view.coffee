@@ -47,11 +47,18 @@ TextTreeView = (external, model) ->
         element.find("code")
           .text(a.expression)
           .each (i, block) -> hljs.highlightBlock(block)
+        element.find('.code-block').addClass('invisible')
     element
 
   # --- interactions ---------------------------------------------------
+  textTreeView.keyboardSignal = (key) ->
+    # TODO up/down - walk the list
+    # TODO left/right - walk the tree
+    if key is 'enter'
+      container.find('.selected').find('.code-block').toggleClass('invisible')
+      return true
+
   selectArtifact = (event) ->
-    console.log('jest')
     container.find('.flat-artifact').removeClass('selected')
     $(this).addClass('selected')
 

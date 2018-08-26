@@ -1,13 +1,18 @@
+.selected, .selected:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+.invisible {
+    display: none;
+}
+
+
 .view {
     position: relative;
 }
 
 .flat-artifact {
     position: relative;
-}
-
-.selected, .selected:hover {
-    background-color: rgb(214, 214, 214);
 }
 
 .details {
@@ -31,9 +36,4 @@
 
 .details .name-block, .details .description-block {
     display: inline-block;
-}
-
-
-.details .code-block {
-    display: none;
 }
