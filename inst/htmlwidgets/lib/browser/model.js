@@ -10,10 +10,10 @@
       stratify = d3.stratify().id(function(d) {
         return d.id;
       }).parentId(function(d) {
-        var ref;
-        if ((ref = d.parents) != null ? ref.length : void 0) {
+        if (d.parents instanceof Array) {
           return d.parents[0];
         }
+        return d.parents;
       });
       return stratify(raw);
     };
@@ -34,7 +34,6 @@
         }
       };
       strats = stratified();
-      console.log(strats);
       return traverse(fun, strats, root);
     };
     return dataset;

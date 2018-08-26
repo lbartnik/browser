@@ -17,7 +17,10 @@ DataSet = (raw) ->
   stratified = () ->
     stratify = d3.stratify()
       .id((d) -> d.id)
-      .parentId((d) -> d.parents[0] if d.parents?.length)
+      .parentId (d) ->
+        # JSON array for mulitple parents is simplified if there is only one parent
+        return d.parents[0] if d.parents instanceof Array
+        return d.parents
     stratify(raw)
 
   # Transforms the raw data into a tree of elements.
@@ -28,7 +31,6 @@ DataSet = (raw) ->
       if node.children
         traverse(fun, child, node.data) for child in node.children
     strats = stratified()
-    console.log(strats)
     traverse(fun, strats, root)
     
 
