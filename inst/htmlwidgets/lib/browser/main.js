@@ -36,6 +36,7 @@
         height: height
       };
     };
+    browser.setOption = function(name, value) {};
     initialize();
     return browser;
   };

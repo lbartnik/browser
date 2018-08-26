@@ -22,6 +22,9 @@ Browser = (element) ->
 
   browser.setSize = (width, height) ->
     size = { width: width, height: height }
+  
+  browser.setOption = (name, value) ->
+    # TODO set option
 
   initialize()
   return browser
