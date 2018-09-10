@@ -17,6 +17,7 @@
     model = null;
     controller = KeyboardController(null);
     initialize = function() {
+      log.debug("");
       options.shiny = typeof HTMLWidgets !== 'undefined' && HTMLWidgets.shinyMode;
       element = $(element);
       return container = $("<div>", {
@@ -25,6 +26,7 @@
     };
     browser = function() {};
     browser.setData = function(raw) {
+      log.debug("");
       model = DataSet(raw);
       view = TextTreeView(container, model);
       controller.setView(view);

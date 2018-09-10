@@ -1,155 +1,172 @@
 [
   {
-    "id": ["14e3598b1c58f1f48b74aab35d6c39183568286f"],
-    "name": ["<plot>"],
+    "id": "14e3598b1c58f1f48b74aab35d6c39183568286f",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 20:53:42",
     "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"],
-    "description": [""],
-    "expression": ["with(x, plot(hour, usage))"]
+    "description": "",
+    "expression": "with(x, plot(hour, usage))"
   },
   {
-    "id": ["2b67f4934da0aa3baecfdd3001008539217d5719"],
-    "name": ["input"],
+    "id": "2b67f4934da0aa3baecfdd3001008539217d5719",
+    "name": "input",
     "names": ["input"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:48:41",
     "parents": ["89c78e898c6eabe8f86337134c0e1defc14ad0d6"],
-    "description": ["data.frame[26280, 3]"],
-    "expression": ["input %<>% dplyr::mutate(timestamp = lubridate::floor_date(timestamp, \"hours\")) %>%\n  dplyr::group_by(meter, timestamp) %>%\n  dplyr::summarise(usage = sum(usage))"]
+    "description": "data.frame[26280, 3]",
+    "expression": "input %<>% dplyr::mutate(timestamp = lubridate::floor_date(timestamp, \"hours\")) %>%\n  dplyr::group_by(meter, timestamp) %>%\n  dplyr::summarise(usage = sum(usage))"
   },
   {
-    "id": ["539d7b916fd845319be242640085b59dbcf52506"],
-    "name": ["<plot>"],
+    "id": "539d7b916fd845319be242640085b59dbcf52506",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 23:07:59",
     "parents": ["b418c06265e5e675ae0259d59829ef18b0d63504"],
-    "description": [""],
-    "expression": ["ggplot(x) + geom_boxplot(aes(x = hour, y = usage)) + facet_wrap(~dow)"]
+    "description": "",
+    "expression": "ggplot(x) + geom_boxplot(aes(x = hour, y = usage)) + facet_wrap(~dow)"
   },
   {
-    "id": ["57fbe7553e11c7b0149040f5781c209b266ed637"],
-    "name": ["m"],
+    "id": "57fbe7553e11c7b0149040f5781c209b266ed637",
+    "name": "m",
     "names": ["m"],
     "class": ["lm"],
+    "time": "2018-08-19 20:57:49",
     "parents": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"],
-    "description": ["lm adjR2:0.33 AIC:7164 df:168"],
-    "expression": ["m <- stats::lm(usage ~ hour:dow, x)"]
+    "description": "lm adjR2:0.33 AIC:7164 df:168",
+    "expression": "m <- stats::lm(usage ~ hour:dow, x)"
   },
   {
-    "id": ["64228d012f7c0ceb8584435effa4e4d3c6fcc171"],
-    "name": ["x"],
+    "id": "64228d012f7c0ceb8584435effa4e4d3c6fcc171",
+    "name": "x",
     "names": ["x"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:54:43",
     "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"],
-    "description": ["data.frame[168, 3]"],
-    "expression": ["ggplot2::ggplot(x) + ggplot2::geom_point(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"]
+    "description": "data.frame[168, 3]",
+    "expression": "ggplot2::ggplot(x) + ggplot2::geom_point(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"
   },
   {
-    "id": ["6ee2aabafb16a60526c9f476c53f97e4f41a3464"],
-    "name": ["input"],
+    "id": "6ee2aabafb16a60526c9f476c53f97e4f41a3464",
+    "name": "input",
     "names": ["input"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 23:05:54",
     "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"],
-    "description": ["data.frame[8760, 3]"],
-    "expression": ["input %<>% filter(meter == \"MAC004391\")"]
+    "description": "data.frame[8760, 3]",
+    "expression": "input %<>% filter(meter == \"MAC004391\")"
   },
   {
-    "id": ["70f3c0a43d894b3cd0d678ef2acbb96f9a5c679e"],
-    "name": ["<plot>"],
+    "id": "70f3c0a43d894b3cd0d678ef2acbb96f9a5c679e",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 20:51:42",
     "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"],
-    "description": [""],
-    "expression": ["with(input, plot(timestamp, usage, type = \"p\", pch = \".\"))"]
+    "description": "",
+    "expression": "with(input, plot(timestamp, usage, type = \"p\", pch = \".\"))"
   },
   {
-    "id": ["866190fb7813fefda8987a1400092a2a4d25f1d3"],
-    "name": ["x"],
+    "id": "866190fb7813fefda8987a1400092a2a4d25f1d3",
+    "name": "x",
     "names": ["x"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 23:02:50",
     "parents": ["f2d8e9297cd1b19780e53f999cd6baff436af39c"],
-    "description": ["data.frame[8760, 5]"],
-    "expression": ["x <- input %>%\n  mutate(hour = hour(timestamp), dow = wday(timestamp)) %>%\n  mutate_at(vars(hour, dow), funs(as.factor))"]
+    "description": "data.frame[8760, 5]",
+    "expression": "x <- input %>%\n  mutate(hour = hour(timestamp), dow = wday(timestamp)) %>%\n  mutate_at(vars(hour, dow), funs(as.factor))"
   },
   {
-    "id": ["89c78e898c6eabe8f86337134c0e1defc14ad0d6"],
-    "name": ["input"],
+    "id": "89c78e898c6eabe8f86337134c0e1defc14ad0d6",
+    "name": "input",
     "names": ["input"],
     "class": ["tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:47:41",
     "parents": [],
-    "description": ["data.frame[52560, 3]"],
-    "expression": ["input <- system.file(\"extdata/block_62.csv\", package = \"repository\") %>%\n  readr::read_csv(na = \"Null\") %>%\n  dplyr::rename(meter = LCLid, timestamp = tstp, usage = energy_kWh) %>%\n  dplyr::filter(meter %in% c(\"MAC004929\", \"MAC000010\", \"MAC004391\"), lubridate::year(timestamp) == 2013)"]
+    "description": "data.frame[52560, 3]",
+    "expression": "input <- system.file(\"extdata/block_62.csv\", package = \"repository\") %>%\n  readr::read_csv(na = \"Null\") %>%\n  dplyr::rename(meter = LCLid, timestamp = tstp, usage = energy_kWh) %>%\n  dplyr::filter(meter %in% c(\"MAC004929\", \"MAC000010\", \"MAC004391\"), lubridate::year(timestamp) == 2013)"
   },
   {
-    "id": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"],
-    "name": ["input"],
+    "id": "af206c4239c332f561c6c9ce1e4929f673d8fd7d",
+    "name": "input",
     "names": ["input"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:50:41",
     "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"],
-    "description": ["data.frame[8760, 3]"],
-    "expression": ["input %<>% dplyr::filter(meter == \"MAC004929\")"]
+    "description": "data.frame[8760, 3]",
+    "expression": "input %<>% dplyr::filter(meter == \"MAC004929\")"
   },
   {
-    "id": ["b418c06265e5e675ae0259d59829ef18b0d63504"],
-    "name": ["x"],
+    "id": "b418c06265e5e675ae0259d59829ef18b0d63504",
+    "name": "x",
     "names": ["x"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 23:06:55",
     "parents": ["6ee2aabafb16a60526c9f476c53f97e4f41a3464"],
-    "description": ["data.frame[8760, 5]"],
-    "expression": ["x <- input %>%\n  mutate(hour = hour(timestamp), dow = wday(timestamp)) %>%\n  mutate_at(vars(hour, dow), funs(as.factor))"]
+    "description": "data.frame[8760, 5]",
+    "expression": "x <- input %>%\n  mutate(hour = hour(timestamp), dow = wday(timestamp)) %>%\n  mutate_at(vars(hour, dow), funs(as.factor))"
   },
   {
-    "id": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"],
-    "name": ["x"],
+    "id": "b83ee3524b86002cfd9a4fef01b757e05814ddc7",
+    "name": "x",
     "names": ["x"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:55:44",
     "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"],
-    "description": ["data.frame[8760, 5]"],
-    "expression": ["x <- input %>%\n  dplyr::mutate(hour = lubridate::hour(timestamp), dow = lubridate::wday(timestamp)) %>%\n  dplyr::mutate_at(dplyr::vars(hour, dow), dplyr::funs(as.factor))"]
+    "description": "data.frame[8760, 5]",
+    "expression": "x <- input %>%\n  dplyr::mutate(hour = lubridate::hour(timestamp), dow = lubridate::wday(timestamp)) %>%\n  dplyr::mutate_at(dplyr::vars(hour, dow), dplyr::funs(as.factor))"
   },
   {
-    "id": ["ba5bb30555c5fba63655cb73b5d08bd074997550"],
-    "name": ["<plot>"],
+    "id": "ba5bb30555c5fba63655cb73b5d08bd074997550",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 23:03:54",
     "parents": ["866190fb7813fefda8987a1400092a2a4d25f1d3"],
-    "description": [""],
-    "expression": ["ggplot(x) + geom_boxplot(aes(x = hour, y = usage)) + facet_wrap(~dow)"]
+    "description": "",
+    "expression": "ggplot(x) + geom_boxplot(aes(x = hour, y = usage)) + facet_wrap(~dow)"
   },
   {
-    "id": ["d0fe8d94550be6fdbe370b88cef5bb7f1f9c4676"],
-    "name": ["<plot>"],
+    "id": "d0fe8d94550be6fdbe370b88cef5bb7f1f9c4676",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 20:56:48",
     "parents": ["b83ee3524b86002cfd9a4fef01b757e05814ddc7"],
-    "description": [""],
-    "expression": ["ggplot2::ggplot(x) + ggplot2::geom_boxplot(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"]
+    "description": "",
+    "expression": "ggplot2::ggplot(x) + ggplot2::geom_boxplot(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"
   },
   {
-    "id": ["f2d8e9297cd1b19780e53f999cd6baff436af39c"],
-    "name": ["input"],
+    "id": "f2d8e9297cd1b19780e53f999cd6baff436af39c",
+    "name": "input",
     "names": ["input"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 23:01:49",
     "parents": ["2b67f4934da0aa3baecfdd3001008539217d5719"],
-    "description": ["data.frame[8760, 3]"],
-    "expression": ["input %<>% filter(meter == \"MAC000010\")"]
+    "description": "data.frame[8760, 3]",
+    "expression": "input %<>% filter(meter == \"MAC000010\")"
   },
   {
-    "id": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"],
-    "name": ["x"],
+    "id": "f59403b59a3ff21c75434f785ce374fbc7d0e937",
+    "name": "x",
     "names": ["x"],
     "class": ["grouped_df", "tbl_df", "tbl", "data.frame"],
+    "time": "2018-08-19 20:52:42",
     "parents": ["af206c4239c332f561c6c9ce1e4929f673d8fd7d"],
-    "description": ["data.frame[168, 3]"],
-    "expression": ["x <- input %>%\n  dplyr::mutate(hour = lubridate::hour(timestamp), dow = lubridate::wday(timestamp, label = TRUE)) %>%\n  dplyr::mutate_at(dplyr::vars(hour, dow), dplyr::funs(as.factor)) %>%\n  dplyr::group_by(hour, dow) %>%\n  dplyr::summarise(usage = mean(usage, na.rm = TRUE))"]
+    "description": "data.frame[168, 3]",
+    "expression": "x <- input %>%\n  dplyr::mutate(hour = lubridate::hour(timestamp), dow = lubridate::wday(timestamp, label = TRUE)) %>%\n  dplyr::mutate_at(dplyr::vars(hour, dow), dplyr::funs(as.factor)) %>%\n  dplyr::group_by(hour, dow) %>%\n  dplyr::summarise(usage = mean(usage, na.rm = TRUE))"
   },
   {
-    "id": ["fb79a00868474d6371201271065cd30877e65d03"],
-    "name": ["<plot>"],
+    "id": "fb79a00868474d6371201271065cd30877e65d03",
+    "name": "<plot>",
     "names": ["<plot>"],
     "class": ["rawplot", "plot"],
+    "time": "2018-08-19 20:54:43",
     "parents": ["f59403b59a3ff21c75434f785ce374fbc7d0e937"],
-    "description": [""],
-    "expression": ["ggplot2::ggplot(x) + ggplot2::geom_point(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"]
+    "description": "",
+    "expression": "ggplot2::ggplot(x) + ggplot2::geom_point(ggplot2::aes(x = hour, y = usage)) + ggplot2::facet_wrap(~dow)"
   }
 ]

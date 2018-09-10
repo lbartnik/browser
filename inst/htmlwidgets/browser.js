@@ -6,13 +6,16 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var browser = Browser(el);
-    console.log('jest2');
 
     // return widget instance
     return {
       renderValue: function(input) {
         if ('knitr' in input.options) {
           browser.setOption('knitr', input.options.knitr)
+        }
+        if ('debug' in input.options) {
+          log.enable(true);
+          log.debug("enabled debug logging");
         }
         browser.setData(input.data);
       },
@@ -23,7 +26,7 @@ HTMLWidgets.widget({
 
       // Make the vis object available as a property on the widget
       // instance we're returning from factory().
-      browser: browser 
+      browser: browser
     };
   }
 });

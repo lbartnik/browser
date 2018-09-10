@@ -8,6 +8,7 @@ Browser = (element) ->
   controller = KeyboardController(null)
 
   initialize = () ->
+    log.debug("")
     options.shiny = (typeof HTMLWidgets != 'undefined' && HTMLWidgets.shinyMode)
     element = $(element)
     container = $("<div>", {class: "main-container"}).appendTo(element)
@@ -15,6 +16,7 @@ Browser = (element) ->
   browser = () ->
 
   browser.setData = (raw) ->
+    log.debug("")
     model = DataSet(raw)
     view  = TextTreeView(container, model)
     controller.setView(view)

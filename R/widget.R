@@ -29,9 +29,10 @@ create_widget <- function (data) {
 
   # create the widget
   htmlwidgets::createWidget("browser",
-                            list(data = strip_class(data),
+                            list(data = prepareJSON(data),
                                  options = list(
-                                   knitr = is_knitr()
+                                   knitr = is_knitr(),
+                                   debug = TRUE
                                  )),
                             dependencies = deps)
 }
@@ -74,13 +75,4 @@ extract_html_deps <- function (data, path) {
         attachment = with_names(names, ids)
       )
     )
-}
-
-
-strip_class <- function (data) {
-  lapply(data, function (element) {
-    if (!is.recursive(element)) return(element)
-    class(element) <- NULL
-    strip_class(element)
-  })
 }
