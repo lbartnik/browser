@@ -42,4 +42,4 @@ rsconnect/
 repository/
 
 # developing htmlwidgets
-htmlwidgets
+/htmlwidgets
