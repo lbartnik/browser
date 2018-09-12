@@ -8,9 +8,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   registerTests = function registerTests(sampleData) {
     var assert, suite, test;
-    assert = chai.assert;
-    suite = Mocha.suite;
-    test = Mocha.test;
+    assert = window.chai.assert;
+    suite = window.mocha.suite;
+    test = window.mocha.test;
+    console.log(assert);
+    console.log(suite);
+    console.log(test);
     return suite('Idioms', function () {
       return test('clone array and elements', function () {
         var x, y;

@@ -1,7 +1,11 @@
 registerTests = (sampleData) ->
-  assert = chai.assert
-  suite  = Mocha.suite
-  test   = Mocha.test
+  assert = window.chai.assert
+  suite  = window.mocha.suite
+  test   = window.mocha.test
+
+  console.log(assert)
+  console.log(suite)
+  console.log(test)
 
   suite 'Idioms', () ->
     test 'clone array and elements', () ->
