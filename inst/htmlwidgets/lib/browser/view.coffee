@@ -1,6 +1,30 @@
+# --- ArtifactView -----------------------------------------------------
+ArtifactView = (external, model) ->
+  container = $('<div>', {class: 'artifact-view'}).appendTo(external)
+  templateUrl = $("#browser-1-attachment").attr("href")
+
+  initiate = () ->
+    element = $("<div>")
+    element.load templateUrl, null, () ->
+      element.find(".name").text(model.name)
+      element.find(".description").text(model.description)
+      element.find("code")
+        .text(model.expression)
+        .each (i, block) -> hljs.highlightBlock(block)
+      element.find('.code-block').addClass('invisible')
+      #element.
+
+  artifactView = () ->
+
+  artifactView.keypressEnter = () -> 
+    container.find('.selected').find('.code-block').toggleClass('invisible')
+
+
+
+
 # --- TextTreeView -----------------------------------------------------
 TextTreeView = (external, model) ->
-  container = $('<div>', {class: 'view'}).appendTo(external)
+  container = $('<div>', {class: 'tree-view'}).appendTo(external)
 
   textTreeView = () ->
 
@@ -40,14 +64,6 @@ TextTreeView = (external, model) ->
   
   # --- loads and fills artifact detailed description
   artifactDescription = (a) ->
-    element = $("<div>")
-      .load $("#browser-1-attachment").attr("href"), null, () ->
-        element.find(".name").text(a.name)
-        element.find(".description").text(a.description)
-        element.find("code")
-          .text(a.expression)
-          .each (i, block) -> hljs.highlightBlock(block)
-        element.find('.code-block').addClass('invisible')
     element
 
   # --- interactions ---------------------------------------------------
@@ -55,7 +71,6 @@ TextTreeView = (external, model) ->
     # TODO up/down - walk the list
     # TODO left/right - walk the tree
     if key is 'enter'
-      container.find('.selected').find('.code-block').toggleClass('invisible')
       return true
 
   selectArtifact = (event) ->

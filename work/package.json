@@ -1,0 +1,12 @@
+{
+  "name": "artifact-browser",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "coffeescript": "^2.3.1"
+  }
+}

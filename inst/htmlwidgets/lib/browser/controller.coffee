@@ -1,12 +1,13 @@
 # --- KeyboardController -----------------------------------------------
 KeyboardController = (view) ->
+  callbacks = {}
 
   keyboardController = () ->
 
   keyboardController.initialize = () ->
     $(window).on 'keydown', keyDown
 
-  keyboardController.setView = (newView) ->
+  keyboardController.addCallback = (key, cb) ->
     view = newView
 
   # --- keyboard signal callback
