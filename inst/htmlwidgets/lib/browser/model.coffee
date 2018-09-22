@@ -21,7 +21,8 @@ DataSet = (raw) ->
       roots.forEach (artifact) ->
         artifact.parents = ['root']
       raw.push({
-        id: 'root'
+        id: 'root',
+        name: 'all elements'
       })
 
   # Turns a list of elements into a tree.

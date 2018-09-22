@@ -30,7 +30,8 @@
           return artifact.parents = ['root'];
         });
         return raw.push({
-          id: 'root'
+          id: 'root',
+          name: 'all elements'
         });
       }
     };
