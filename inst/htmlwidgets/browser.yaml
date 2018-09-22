@@ -9,6 +9,11 @@ dependencies:
     src: htmlwidgets/lib/d3-5.7.0
     script:
       - d3.v5.js
+  - name: mustache
+    version: 3.0.0
+    src: htmlwidgets/lib/mustache-3.0.0
+    script:
+      - mustache.js
   - name: highlight
     version: 9.12.0
     src: htmlwidgets/lib/highlight-9.12.0
