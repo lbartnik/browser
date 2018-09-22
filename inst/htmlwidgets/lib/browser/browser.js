@@ -18,7 +18,7 @@
     container = null;
     view = null;
     model = null;
-    controller = KeyboardController(null);
+    controller = null;
     initialize = function initialize() {
       log.debug("");
       options.shiny = typeof HTMLWidgets !== 'undefined' && HTMLWidgets.shinyMode;
@@ -32,7 +32,7 @@
       log.debug("");
       model = DataSet(raw);
       view = TextTreeView(container, model);
-      controller.setView(view);
+      controller = KeyboardController(view);
       return view.refresh();
     };
     browser.setSize = function (width, height) {

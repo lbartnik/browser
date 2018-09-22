@@ -24,16 +24,23 @@ DataSet = (raw) ->
     stratify(raw)
 
   # Transforms the raw data into a tree of elements.
-  dataset.traverseAsTree = (fun, root) ->
+  augmentAsTree = () ->
     log.debug("traversing as tree")
-    traverse = (fun, node, parent) ->
-      fun(node.data, parent)
-      if node.children
-        traverse(fun, child, node.data) for child in node.children
-    strats = stratified()
-    traverse(fun, strats, root)
-    
 
+    traverse = (node, parent) ->
+      # TODO add DFS parentheses
+      node.data.level = node.level
+      if node.children
+        traverse(child, node.data) for child in node.children
+    strats = stratified()
+    traverse(strats, {})
+
+  # --- for each -------------------------------------------------------
+  dataset.forEach = (fun) ->
+    raw.forEach fun
+
+  # --- initialize and return ------------------------------------------
+  augmentAsTree()
   return dataset
 
 

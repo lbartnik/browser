@@ -8,7 +8,7 @@ KeyboardController = (view) ->
     $(window).on 'keydown', keyDown
 
   keyboardController.addCallback = (key, cb) ->
-    view = newView
+    callbacks
 
   # --- keyboard signal callback
   keyDown = (e) ->

@@ -16,7 +16,7 @@
   var DataSet;
 
   DataSet = function DataSet(raw) {
-    var dataset, stratified;
+    var augmentAsTree, dataset, stratified;
     dataset = function dataset() {};
     // Turns a list of elements into a tree.
     stratified = function stratified() {
@@ -33,25 +33,32 @@
       return stratify(raw);
     };
     // Transforms the raw data into a tree of elements.
-    dataset.traverseAsTree = function (fun, root) {
+    augmentAsTree = function augmentAsTree() {
       var strats, _traverse;
       log.debug("traversing as tree");
-      _traverse = function traverse(fun, node, parent) {
+      _traverse = function traverse(node, parent) {
         var child, i, len, ref, results;
-        fun(node.data, parent);
+        // TODO add DFS parentheses
+        node.data.level = node.level;
         if (node.children) {
           ref = node.children;
           results = [];
           for (i = 0, len = ref.length; i < len; i++) {
             child = ref[i];
-            results.push(_traverse(fun, child, node.data));
+            results.push(_traverse(child, node.data));
           }
           return results;
         }
       };
       strats = stratified();
-      return _traverse(fun, strats, root);
+      return _traverse(strats, {});
     };
+    // --- for each -------------------------------------------------------
+    dataset.forEach = function (fun) {
+      return raw.forEach(fun);
+    };
+    // --- initialize and return ------------------------------------------
+    augmentAsTree();
     return dataset;
   };
 

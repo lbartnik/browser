@@ -6,3 +6,8 @@ suite 'Idioms', () ->
     y = x.map (e) -> { e... }
     y[0].x = 3
     chai.assert.equal(x[0].x, 1)
+
+
+suite 'ArtifactView', () ->
+  test 'initialize template', () ->
+    av = ArtifactView($('<div>'), {name: 'name'})

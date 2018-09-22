@@ -20,4 +20,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       return chai.assert.equal(x[0].x, 1);
     });
   });
+
+  suite('ArtifactView', function () {
+    return test('initialize template', function () {
+      var av;
+      return av = ArtifactView($('<div>'), {
+        name: 'name'
+      });
+    });
+  });
 }).call(undefined);

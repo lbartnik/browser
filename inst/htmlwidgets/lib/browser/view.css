@@ -15,25 +15,25 @@
     position: relative;
 }
 
-.details {
+.artifact-view {
     padding: 1pt;
 }
 
-.details:hover {
+.artifact-view:hover {
     background-color: rgb(245, 245, 245);
 }
 
-.details .name-label {
+.artifact-view .name-label {
     font-family: monospace;
     white-space: pre;
     color: silver;
 }
 
-.details .name, .details .description {
+.artifact-view .name, .artifact-view .description {
     font-family: monospace;
     white-space: pre;
 }
 
-.details .name-block, .details .description-block {
+.artifact-view .name-block, .artifact-view .description-block {
     display: inline-block;
 }

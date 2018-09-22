@@ -1,25 +1,30 @@
 # --- ArtifactView -----------------------------------------------------
-ArtifactView = (external, model) ->
-  container = $('<div>', {class: 'artifact-view'}).appendTo(external)
+#
+# @param parent Parent HTML element.
+# @param model  Artifact model (DTO).
+# @param node   D3 tree node object.
+#
+ArtifactView = (model, parent) ->
   templateUrl = $("#browser-1-attachment").attr("href")
 
-  initiate = () ->
-    element = $("<div>")
-    element.load templateUrl, null, () ->
-      element.find(".name").text(model.name)
-      element.find(".description").text(model.description)
-      element.find("code")
-        .text(model.expression)
+  initialize = () ->
+    $.get templateUrl, (data) ->
+      rendered = $("<div>")
+      rendered.html(Mustache.render(data, model))
+      rendered.find("code")
         .each (i, block) -> hljs.highlightBlock(block)
-      element.find('.code-block').addClass('invisible')
-      #element.
+      rendered.find('.code-block').addClass('invisible')
+      rendered.appendTo(parent)
+      # TODO add event handlers
 
   artifactView = () ->
 
   artifactView.keypressEnter = () -> 
     container.find('.selected').find('.code-block').toggleClass('invisible')
 
-
+  # return the instance
+  initialize()
+  artifactView
 
 
 # --- TextTreeView -----------------------------------------------------
@@ -30,37 +35,8 @@ TextTreeView = (external, model) ->
 
   # --- refresh view ---------------------------------------------------
   textTreeView.refresh = () ->
-    if false
-      listBasedView()
-    else
-      flatView()
-
-  # --- creates a number of nested, unordered lists
-  listBasedView = () ->
-    visit = (node, parent) ->
-      node.htmlSelf = $('<li>').appendTo(parent.htmlChildren)
-      node.htmlChildren = $('<ul>').appendTo(node.htmlSelf)
-
-    topUl = $('<ul>').appendTo(container)
-    htmlSelf = $('<li>').appendTo(topUl)
-    htmlChildren = $('<ul>').appendTo(htmlSelf)
-    root = {htmlChildren: topUl}
-
-    model.traverseAsTree(visit, {htmlChildren: htmlChildren})
-
-  # --- creates a <div> for each data element, they are all assigned
-  #     to the main container
-  flatView = () ->
-    create = (node, parent) ->
-      node.left = parent.left + 20
-      node.element = $('<div>', {
-          class: 'flat-artifact',
-        })
-        .css({left: node.left})
-        .on('click', node, selectArtifact)
-        .appendTo(container)
-        .append(artifactDescription(node))
-    model.traverseAsTree(create, {left: 0})
+    model.forEach (model) ->
+      av = ArtifactView(model, container)
   
   # --- loads and fills artifact detailed description
   artifactDescription = (a) ->
@@ -86,3 +62,4 @@ TextTreeView = (external, model) ->
 # --- exports ----------------------------------------------------------
 
 window.TextTreeView = TextTreeView
+window.ArtifactView = ArtifactView

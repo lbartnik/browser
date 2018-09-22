@@ -5,7 +5,7 @@ Browser = (element) ->
   container  = null
   view       = null
   model      = null
-  controller = KeyboardController(null)
+  controller = null
 
   initialize = () ->
     log.debug("")
@@ -19,7 +19,7 @@ Browser = (element) ->
     log.debug("")
     model = DataSet(raw)
     view  = TextTreeView(container, model)
-    controller.setView(view)
+    controller = KeyboardController(view)
     view.refresh()
 
   browser.setSize = (width, height) ->

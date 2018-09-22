@@ -13,7 +13,7 @@
       return $(window).on('keydown', keyDown);
     };
     keyboardController.addCallback = function (key, cb) {
-      return view = newView;
+      return callbacks;
     };
     // --- keyboard signal callback
     keyDown = function keyDown(e) {
