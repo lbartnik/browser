@@ -11,29 +11,19 @@
     position: relative;
 }
 
-.flat-artifact {
-    position: relative;
+.artifact-line {
+    display: block;
+}
+
+.artifact-line:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .artifact-view {
     padding: 1pt;
 }
 
-.artifact-view:hover {
-    background-color: rgb(245, 245, 245);
-}
-
-.artifact-view .name-label {
+.artifact-view .arrow, .artifact-view .name, .artifact-view .description {
     font-family: monospace;
-    white-space: pre;
-    color: silver;
-}
-
-.artifact-view .name, .artifact-view .description {
-    font-family: monospace;
-    white-space: pre;
-}
-
-.artifact-view .name-block, .artifact-view .description-block {
-    display: inline-block;
+    display: inline;
 }

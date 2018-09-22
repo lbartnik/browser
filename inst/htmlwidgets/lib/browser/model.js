@@ -39,7 +39,7 @@
       _traverse = function traverse(node, parent) {
         var child, i, len, ref, results;
         // TODO add DFS parentheses
-        node.data.level = node.level;
+        node.data.depth = node.depth;
         if (node.children) {
           ref = node.children;
           results = [];
@@ -56,6 +56,29 @@
     // --- for each -------------------------------------------------------
     dataset.forEach = function (fun) {
       return raw.forEach(fun);
+    };
+    dataset.asTree = function () {
+      var strats, _traverse2;
+      _traverse2 = function traverse(node) {
+        var child;
+        if (node.children) {
+          node.data.children = function () {
+            var i, len, ref, results;
+            ref = node.children;
+            results = [];
+            for (i = 0, len = ref.length; i < len; i++) {
+              child = ref[i];
+              results.push(_traverse2(child));
+            }
+            return results;
+          }();
+        } else {
+          node.data.children = [];
+        }
+        return node.data;
+      };
+      strats = stratified();
+      return _traverse2(strats);
     };
     // --- initialize and return ------------------------------------------
     augmentAsTree();

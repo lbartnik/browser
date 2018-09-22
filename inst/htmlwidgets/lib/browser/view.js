@@ -15,9 +15,9 @@
     templateUrl = $("#browser-1-attachment").attr("href");
     initialize = function initialize() {
       return $.get(templateUrl, function (data) {
-        var rendered;
-        rendered = $("<div>");
-        rendered.html(Mustache.render(data, model));
+        var parsed, rendered;
+        parsed = $.parseHTML(Mustache.render(data, model));
+        rendered = $(parsed);
         rendered.find("code").each(function (i, block) {
           return hljs.highlightBlock(block);
         });
@@ -37,19 +37,33 @@
 
   // --- TextTreeView -----------------------------------------------------
   TextTreeView = function TextTreeView(external, model) {
-    var artifactDescription, container, selectArtifact, textTreeView;
+    var artifactDescription, container, selectArtifact, textTreeView, views;
     container = $('<div>', {
       class: 'tree-view'
     }).appendTo(external);
+    views = [];
     textTreeView = function textTreeView() {};
     // --- refresh view ---------------------------------------------------
     textTreeView.refresh = function () {
-      return model.forEach(function (model) {
-        var av;
-        return av = ArtifactView(model, container);
-      });
+      var _traverse;
+      _traverse = function traverse(node) {
+        var av, child, el, j, len, ref, results;
+        el = $("<div>", {
+          class: 'artifact-line'
+        }).css("padding-left", node.depth * 20).appendTo(container);
+        // TODO remove previous views; maybe employ d3?
+        av = ArtifactView(node, el);
+        views.push(av);
+        ref = node.children;
+        results = [];
+        for (j = 0, len = ref.length; j < len; j++) {
+          child = ref[j];
+          results.push(_traverse(child));
+        }
+        return results;
+      };
+      return _traverse(model.asTree());
     };
-
     // --- loads and fills artifact detailed description
     artifactDescription = function artifactDescription(a) {
       return element;

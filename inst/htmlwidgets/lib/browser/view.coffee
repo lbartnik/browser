@@ -9,8 +9,8 @@ ArtifactView = (model, parent) ->
 
   initialize = () ->
     $.get templateUrl, (data) ->
-      rendered = $("<div>")
-      rendered.html(Mustache.render(data, model))
+      parsed = $.parseHTML(Mustache.render(data, model))
+      rendered = $(parsed)
       rendered.find("code")
         .each (i, block) -> hljs.highlightBlock(block)
       rendered.find('.code-block').addClass('invisible')
@@ -30,14 +30,23 @@ ArtifactView = (model, parent) ->
 # --- TextTreeView -----------------------------------------------------
 TextTreeView = (external, model) ->
   container = $('<div>', {class: 'tree-view'}).appendTo(external)
+  views = []
 
   textTreeView = () ->
 
   # --- refresh view ---------------------------------------------------
   textTreeView.refresh = () ->
-    model.forEach (model) ->
-      av = ArtifactView(model, container)
-  
+    traverse = (node) ->
+      el = $("<div>", {class: 'artifact-line'})
+        .css("padding-left", node.depth * 20)
+        .appendTo(container)
+      # TODO remove previous views; maybe employ d3?
+      av = ArtifactView(node, el)
+      views.push(av)
+      traverse(child) for child in node.children
+    
+    traverse(model.asTree())
+
   # --- loads and fills artifact detailed description
   artifactDescription = (a) ->
     element

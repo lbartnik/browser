@@ -36,6 +36,10 @@
     });
   };
 
+  Array.prototype.last = function () {
+    return this[this.length - 1];
+  };
+
   if (Math.sign === void 0) {
     sign = function sign(x) {
       if (x < 0) {

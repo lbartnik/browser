@@ -29,7 +29,7 @@ DataSet = (raw) ->
 
     traverse = (node, parent) ->
       # TODO add DFS parentheses
-      node.data.level = node.level
+      node.data.depth = node.depth
       if node.children
         traverse(child, node.data) for child in node.children
     strats = stratified()
@@ -38,6 +38,16 @@ DataSet = (raw) ->
   # --- for each -------------------------------------------------------
   dataset.forEach = (fun) ->
     raw.forEach fun
+
+  dataset.asTree = () ->
+    traverse = (node) ->
+      if node.children
+        node.data.children = (traverse(child) for child in node.children)
+      else
+        node.data.children = []
+      node.data
+    strats = stratified()
+    traverse(strats)
 
   # --- initialize and return ------------------------------------------
   augmentAsTree()
