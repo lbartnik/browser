@@ -1,0 +1,29 @@
+.selected, .selected:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+.invisible {
+    display: none;
+}
+
+
+.view {
+    position: relative;
+}
+
+.artifact-line {
+    display: block;
+}
+
+.artifact-line:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.artifact-view {
+    padding: 1pt;
+}
+
+.artifact-view .arrow, .artifact-view .name, .artifact-view .description {
+    font-family: monospace;
+    display: inline;
+}

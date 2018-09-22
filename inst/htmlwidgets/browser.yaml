@@ -5,10 +5,15 @@ dependencies:
     script:
       - jquery.js
   - name: d3
-    version: 4.11.0
-    src: htmlwidgets/lib/d3-4.11.0
+    version: 5.7.0
+    src: htmlwidgets/lib/d3-5.7.0
     script:
-      - d3.min.js
+      - d3.v5.js
+  - name: mustache
+    version: 3.0.0
+    src: htmlwidgets/lib/mustache-3.0.0
+    script:
+      - mustache.js
   - name: highlight
     version: 9.12.0
     src: htmlwidgets/lib/highlight-9.12.0
@@ -20,11 +25,14 @@ dependencies:
     version: 0.1
     src: htmlwidgets/lib/browser
     script:
+      - browser.js
       - model.js
       - view.js
       - controller.js
+      - utilities.js
     stylesheet:
-      - view.js
-      - controller.js
+      - browser.css
+      - view.css
+      - controller.css
     attachment:
       - html/artifact.html

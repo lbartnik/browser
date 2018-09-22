@@ -12,6 +12,9 @@ Array::max = () ->
 Array::remove = (e) ->
   @filter (el) -> el isnt e
 
+Array::last = () ->
+  @[@.length - 1]
+
 if Math.sign is undefined
   sign = (x) -> if x < 0 then -1 else 1
 else
@@ -61,6 +64,28 @@ Viewport = (selection) ->
   return viewport
 
 
+# --- Shiny ------------------------------------------------------------
+
+isShiny = () ->
+  typeof HTMLWidgets is not 'undefined' && HTMLWidgets.shinyMode
+
+send2Shiny = (inputName, message) ->
+  if isShiny
+    Shiny.onInputChange(inputName, message)
+  else
+    alert message
+
+# --- exceptions in callbacks ------------------------------------------
+
+tryCatch = (fun, args...) ->
+  try
+    fun(args...)
+  catch err
+    send2Shiny('exception', err.message)
+
 # --- exports ----------------------------------------------------------
 
 window.log = Log()
+window.isShiny = isShiny
+window.send2Shiny = send2Shiny
+window.tryCatch = tryCatch

@@ -7,10 +7,10 @@
 #'        for more details.
 #'
 #' @import miniUI
-#' @importFrom shiny dialogViewer observeEvent runGadget shinyUI stopApp
+#' @importFrom shiny browserViewer dialogViewer observeEvent runGadget shinyUI stopApp
 #' @export
 #' @rdname addin
-browser_addin <- function (data)
+browser_addin <- function (data, .inBrowser = FALSE)
 {
   stopifnot(is_container(data))
 
@@ -38,11 +38,17 @@ browser_addin <- function (data)
       warn('User cancelled.')
       stopApp(invisible(FALSE))
     })
+
+    observeEvent(input$exception, {
+      warn(glue("Caught JS exception: {input$exception}"))
+      stopApp(invisible(FALSE))
+    })
   }
 
+
   suppressMessages({
-    runGadget(ui, server, viewer = dialogViewer("Artifact Browser", width = 750),
-              stopOnCancel = FALSE)
+    viewer <- if (isTRUE(.inBrowser)) browserViewer() else dialogViewer("Artifact Browser", width = 750)
+    runGadget(ui, server, viewer = viewer, stopOnCancel = FALSE)
   })
 }
 

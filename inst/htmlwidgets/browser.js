@@ -10,10 +10,19 @@ HTMLWidgets.widget({
     // return widget instance
     return {
       renderValue: function(input) {
-        if ('knitr' in input.options) {
-          browser.setOption('knitr', input.options.knitr)
+        try {
+          if ('knitr' in input.options) {
+            browser.setOption('knitr', input.options.knitr)
+          }
+          if ('debug' in input.options) {
+            log.enable(true);
+            log.debug("enabled debug logging");
+          }
+          browser.setData(input.data);
         }
-        browser.setData(input.data);
+        catch (err) {
+          send2Shiny('exception', err.message)
+        }
       },
 
       resize: function(width, height) {
@@ -22,7 +31,7 @@ HTMLWidgets.widget({
 
       // Make the vis object available as a property on the widget
       // instance we're returning from factory().
-      browser: browser 
+      browser: browser
     };
   }
 });

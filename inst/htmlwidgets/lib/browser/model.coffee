@@ -13,25 +13,61 @@ DataSet = (raw) ->
 
   dataset = () ->
 
+  # --- internals ------------------------------------------------------
+
+  assertSingleRoot = () ->
+    roots = raw.filter (artifact) -> not artifact.parents?.length
+    if roots.length
+      roots.forEach (artifact) ->
+        artifact.parents = ['root']
+      raw.push({
+        id: 'root',
+        name: 'all elements'
+      })
+
   # Turns a list of elements into a tree.
   stratified = () ->
     stratify = d3.stratify()
       .id((d) -> d.id)
-      .parentId((d) -> d.parents[0] if d.parents?.length)
+      .parentId (d) ->
+        # JSON array for mulitple parents is simplified if there is only one parent
+        return d.parents[0] if d.parents instanceof Array
+        return d.parents
     stratify(raw)
 
   # Transforms the raw data into a tree of elements.
-  dataset.traverseAsTree = (f, root) ->
+  augmentAsTree = () ->
     log.debug("traversing as tree")
+
     traverse = (node, parent) ->
-      f(node.data, parent)
+      # TODO add DFS parentheses
+      node.data.depth = node.depth
       if node.children
         traverse(child, node.data) for child in node.children
     strats = stratified()
-    console.log(strats.children[0])
-    traverse(strats, root)
-    
+    traverse(strats, {})
 
+  # --- accessors ------------------------------------------------------
+  dataset.data = () ->
+    raw
+
+  # --- for each -------------------------------------------------------
+  dataset.forEach = (fun) ->
+    raw.forEach fun
+
+  dataset.asTree = () ->
+    traverse = (node) ->
+      if node.children
+        node.data.children = (traverse(child) for child in node.children)
+      else
+        node.data.children = []
+      node.data
+    strats = stratified()
+    traverse(strats)
+
+  # --- initialize and return ------------------------------------------
+  assertSingleRoot()
+  augmentAsTree()
   return dataset
 
 

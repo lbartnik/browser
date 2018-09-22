@@ -37,3 +37,9 @@ rsconnect/
 
 # npm
 */node_modules
+
+# repository of artifacts
+repository/
+
+# developing htmlwidgets
+/htmlwidgets

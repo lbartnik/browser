@@ -4,7 +4,7 @@
 \alias{browser_addin}
 \title{RStudio AddIn.}
 \usage{
-browser_addin(data)
+browser_addin(data, .inBrowser = FALSE)
 }
 \arguments{
 \item{data}{Container with artifacts; see \code{\link[repository:read_artifacts]{repository::read_artifacts()}}

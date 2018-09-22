@@ -4,8 +4,9 @@
 <meta charset="utf-8"/>
 
 <script src="lib/jquery-3.2.1/jquery.js"></script>
-<script src="lib/d3-4.11.0/d3.min.js"></script>
+<script src="lib/d3-5.7.0/d3.v5.js"></script>
 <script src="lib/highlight-9.12.0/highlight.js"></script>
+<script src="lib/mustache-3.0.0/mustache.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "lib/highlight-9.12.0/styles/zenburn.css">
 
 <script src="coffeescript-2.0/coffeescript.js"></script>
@@ -16,10 +17,11 @@
 <script type="text/coffeescript" src="lib/browser/utilities.coffee"></script>
 <script type="text/coffeescript" src="lib/browser/browser.coffee"></script>
 
+<link rel = "stylesheet" type = "text/css" href = "lib/browser/browser.css">
 <link rel = "stylesheet" type = "text/css" href = "lib/browser/view.css">
 <link rel = "stylesheet" type = "text/css" href = "lib/browser/controller.css">
 
-<link id="visualize-1-attachment" rel="attachment" href="lib/browser/html/artifact.html">
+<link id="browser-1-attachment" rel="attachment" href="lib/browser/html/artifact.html">
 
 <link id="data-data-attachment" rel="attachment" href="data.json"/>
 <link id="plots-934d42cd1567c3b5ee01dd0d2fa3647e5d0c2d0e-attachment" rel="attachment" href="plots-1/934d42cd1567c3b5ee01dd0d2fa3647e5d0c2d0e_min.png"/>
@@ -32,7 +34,7 @@
 </head>
 <body style="background-color:white;">
 
-<div id="canvas" class="main-container" style="border: 1px solid black; width: 500px; height: 500px"></div>
+<div id="canvas" style="border: 1px solid black; width: 500px; height: 500px"></div>
 
 <script type="text/coffeescript">
 log.enable(true)

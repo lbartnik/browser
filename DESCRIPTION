@@ -24,6 +24,7 @@ Suggests:
   testthat
 Collate:
   'browser.R'
+  'json.R'
   'shiny.R'
   'widget.R'
 Remotes:
