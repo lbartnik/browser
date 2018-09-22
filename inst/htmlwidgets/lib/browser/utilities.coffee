@@ -75,8 +75,17 @@ send2Shiny = (inputName, message) ->
   else
     alert message
 
+# --- exceptions in callbacks ------------------------------------------
+
+tryCatch = (fun, args...) ->
+  try
+    fun(args...)
+  catch err
+    send2Shiny('exception', err.message)
+
 # --- exports ----------------------------------------------------------
 
 window.log = Log()
 window.isShiny = isShiny
 window.send2Shiny = send2Shiny
+window.tryCatch = tryCatch

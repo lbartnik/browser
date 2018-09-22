@@ -14,7 +14,8 @@
     var artifactView, initialize, templateUrl;
     templateUrl = $("#browser-1-attachment").attr("href");
     initialize = function initialize() {
-      return $.get(templateUrl, function (data) {
+      var onLoad;
+      onLoad = function onLoad(data) {
         var parsed, rendered;
         parsed = $.parseHTML(Mustache.render(data, model));
         rendered = $(parsed);
@@ -23,9 +24,12 @@
         });
         rendered.find('.code-block').addClass('invisible');
         return rendered.appendTo(parent);
+      };
+      // TODO add event handlers
+      return $.get(templateUrl, function (data) {
+        return tryCatch(onLoad, data);
       });
     };
-    // TODO add event handlers
     artifactView = function artifactView() {};
     artifactView.keypressEnter = function () {
       return container.find('.selected').find('.code-block').toggleClass('invisible');

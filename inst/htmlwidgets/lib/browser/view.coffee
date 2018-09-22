@@ -8,7 +8,7 @@ ArtifactView = (model, parent) ->
   templateUrl = $("#browser-1-attachment").attr("href")
 
   initialize = () ->
-    $.get templateUrl, (data) ->
+    onLoad = (data) ->
       parsed = $.parseHTML(Mustache.render(data, model))
       rendered = $(parsed)
       rendered.find("code")
@@ -16,6 +16,8 @@ ArtifactView = (model, parent) ->
       rendered.find('.code-block').addClass('invisible')
       rendered.appendTo(parent)
       # TODO add event handlers
+    $.get templateUrl, (data) ->
+      tryCatch onLoad, data
 
   artifactView = () ->
 
