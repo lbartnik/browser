@@ -64,6 +64,19 @@ Viewport = (selection) ->
   return viewport
 
 
+# --- Shiny ------------------------------------------------------------
+
+isShiny = () ->
+  typeof HTMLWidgets is not 'undefined' && HTMLWidgets.shinyMode
+
+send2Shiny = (inputName, message) ->
+  if isShiny
+    Shiny.onInputChange(inputName, message)
+  else
+    alert message
+
 # --- exports ----------------------------------------------------------
 
 window.log = Log()
+window.isShiny = isShiny
+window.send2Shiny = send2Shiny
