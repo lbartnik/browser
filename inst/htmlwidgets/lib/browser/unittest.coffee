@@ -10,4 +10,9 @@ suite 'Idioms', () ->
 
 suite 'ArtifactView', () ->
   test 'initialize template', () ->
-    av = ArtifactView($('<div>'), {name: 'name'})
+    av = ArtifactView({name: 'name'}, $('<div>'))
+
+suite 'Model', () ->
+  test 'multiple roots', () ->
+    ds = DataSet([ {}, {} ])
+    chai.assert.lengthOf(ds.data(), 3)

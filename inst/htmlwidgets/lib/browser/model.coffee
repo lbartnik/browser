@@ -13,6 +13,17 @@ DataSet = (raw) ->
 
   dataset = () ->
 
+  # --- internals ------------------------------------------------------
+
+  assertSingleRoot = () ->
+    roots = raw.filter (artifact) -> not artifact.parents?.length
+    if roots.length
+      roots.forEach (artifact) ->
+        artifact.parents = ['root']
+      raw.push({
+        id: 'root'
+      })
+
   # Turns a list of elements into a tree.
   stratified = () ->
     stratify = d3.stratify()
@@ -35,6 +46,10 @@ DataSet = (raw) ->
     strats = stratified()
     traverse(strats, {})
 
+  # --- accessors ------------------------------------------------------
+  dataset.data = () ->
+    raw
+
   # --- for each -------------------------------------------------------
   dataset.forEach = (fun) ->
     raw.forEach fun
@@ -50,6 +65,7 @@ DataSet = (raw) ->
     traverse(strats)
 
   # --- initialize and return ------------------------------------------
+  assertSingleRoot()
   augmentAsTree()
   return dataset
 

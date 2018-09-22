@@ -24,9 +24,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   suite('ArtifactView', function () {
     return test('initialize template', function () {
       var av;
-      return av = ArtifactView($('<div>'), {
+      return av = ArtifactView({
         name: 'name'
-      });
+      }, $('<div>'));
+    });
+  });
+
+  suite('Model', function () {
+    return test('multiple roots', function () {
+      var ds;
+      ds = DataSet([{}, {}]);
+      return chai.assert.lengthOf(ds.data(), 3);
     });
   });
 }).call(undefined);
